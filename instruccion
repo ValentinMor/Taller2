@@ -1,0 +1,3 @@
+sudo docker run --network=host nodemailer/wildduck
+node manage-mailbox.js
+
