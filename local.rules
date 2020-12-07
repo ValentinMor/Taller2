@@ -3,3 +3,4 @@ alert tcp !HOME_NET any -> HOME_NET any (msg:"Intento de inicio de sesión de em
 alert tcp !HOME_NET any -> HOME_NET any (msg:"Intento de inicio de sesión de email admin"; pcre:"(admin\@admin\.com)"; sid:587226;)
 alert ssl !HOME_NET any -> HOME_NET any (msg:"Correo nulo"; content:""; offset = 9; sid:52119)
 alert tls !HOME_NET any -> HOME_NET any (msg:"Handshake detectado";flow:to_server; sid: 941366)
+alert ssl HOME_NET any -> !HOME_NET any (resp:rst_rcv; msg:"Se te envió un paquete encriptado (SSL) desde el servidor wildduck"; sid:3742633;)
