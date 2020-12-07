@@ -1,0 +1,5 @@
+alert tcp !HOME_NET any -> HOME_NET any (msg:"Intento de inicio de sesión de mail gmail, outlook o yahoo"; pcre:"(\@gmail\.com|\@outlook\.com|\@yahoo\.com)"; sid:473626;)
+alert tcp !HOME_NET any -> HOME_NET any (msg:"Intento de inicio de sesión de email ligado a Universidad Diego Portales"; pcre:"(\@mail\.udp\.cl)"; sid:385726;)
+alert tcp !HOME_NET any -> HOME_NET any (msg:"Intento de inicio de sesión de email admin"; pcre:"(admin\@admin\.com)"; sid:587226;)
+alert ssl !HOME_NET any -> HOME_NET any (msg:"Correo nulo"; content:""; offset = 9; sid:52119)
+alert tls !HOME_NET any -> HOME_NET any (msg:"Handshake detectado";flow:to_server; sid: 941366)
